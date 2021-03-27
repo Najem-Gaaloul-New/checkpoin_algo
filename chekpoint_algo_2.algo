@@ -1,0 +1,79 @@
+ALGORITHM somme_equal
+VAR
+    somme,i,j:INTEGER:=0;
+    const
+    tab1 : ARRAY_OF INTEGER[10]; := [6,55,42,32,52,22,252,25,2,55];
+    tab2 : ARRAY_OF INTEGER[8]; := [8,558,2,34,2,85,252,215];
+    tab_concat : ARRAY_OF INTEGER[20];
+    test : BOOLEAN; :=false;
+    htab : HASH_TABLE<INTEGER,INTEGER>;
+BEGIN
+   tab_concat:=tab1.concat(tab2);
+
+
+
+///////////////   distinct elements   //////////////////
+ FOR i FROM 0 TO length(tab_concat)-1 STEP 1  DO
+    test=false
+       FOR j FROM 0 TO length(tab_concat)-1 STEP 1  DO
+           IF (tab_concat[i] = tab_concat[j]) THEN
+               test=true;
+           END_IF
+       END_FOR
+       IF (test=false) THEN
+           somme:=somme+tab_concat[i];
+       END_IF
+   END_FOR
+
+    write("la somme des valeurs differents =", somme)
+    
+
+
+/////////////////////distinct elements  with h-tab///////////////
+
+    write("taille de tableau");
+    read(n);
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        write("valeur",i); 
+        read(value);
+
+        if (htab.lookup(value)= true) THEN 
+         { count=htab.get(value)+1;
+            htab.insert(value,count);
+            somme=somme+1
+         }
+         else{
+             htab.insert(value,1);
+         }
+   
+    END_FOR
+   write("la somme des veleurs different=", somme);
+
+
+
+ /////////////////  overlapping elements  //////////////////////   
+    somme:=0;
+ FOR i FROM 0 TO length(tab_concat)-1 STEP 1  DO
+    test=false
+       FOR j FROM 0 TO length(tab_concat)-1 STEP 1  DO
+           IF (tab_concat[i] = tab_concat[j]) THEN
+               test=true;
+           END_IF
+       END_FOR
+       IF (test=true) THEN
+           somme:=somme+tab_concat[i];
+       END_IF
+   END_FOR
+
+   write("la somme des valeurs égeaux="; somme)
+
+
+
+
+
+
+
+END
+
+
+

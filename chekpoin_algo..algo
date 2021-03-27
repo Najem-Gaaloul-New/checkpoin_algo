@@ -1,0 +1,19 @@
+ALGORITHM str_count
+VAR
+Nbr_Words:INTEGER:=1;
+Nbr_Voyelle:INTEGER:=0;
+
+BEGIN
+write ("enter a character string");
+read(str);
+FOR i FROM 0 TO str.length-1  DO
+    IF (str[i]="a"or"e" or"i"or"o"or"u"or"y") THEN
+        Nbr_Voyelle:=Nbr_Voyelle+1;
+    ELSE_IF (str[i]=" ") THEN
+        Nbr_Words:=Nbr_Words+1;
+    END_IF
+END_FOR
+write("number of words=", Nbr_Words);
+write("number of char=", str.length);
+write("number of voyelle= ", Nbr_Voyelle);
+END
