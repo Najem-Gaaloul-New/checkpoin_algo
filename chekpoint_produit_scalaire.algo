@@ -1,0 +1,74 @@
+
+///////////////       parti1     /////////////////////
+PROCEDURE dot_product(v1,v2,var ps:INTEGER)
+BEGIN
+    FOR i FROM 0 TO v1.length -1 DO
+        ps:=ps+(v1[i]*v2[i]);
+    END_FOR
+END
+ALGORITHM produit_scalaire
+    var
+    i,n:INTEGER;
+    v1,v2:ARRAY_OF INTEGER
+BEGIN   
+    write("taille du tableau");
+    read(n);
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        read(v1[i]);
+        read(v2[i]);
+    END_FOR
+    dot_product(v1,v2);
+     write("the product of v1 and v2=" ,ps);
+END
+
+
+////////////////////   partie2 /////////////////////
+
+
+ALGORITHM orthogonal
+    var
+    ps,i,j:INTEGER;
+    vectors:ARRAY_OF INTEGER:=[[8, 3, 1],[9, 0, 3], [1, 4, 0], [3, 1, 2], [2, 3 ,8], [1, 2, 0]]
+BEGIN
+    FOR i FROM 0 TO n-1 STEP 1 DO
+        FOR j FROM 1 TO n-1 STEP 1  DO
+            ps=0;
+            dot_product(vectors[i],vectors[j],ps);
+            IF (ps=0) THEN
+                write(vectors[i],"et",vectors[2],"orthogonaux ");
+            ELSE
+                write(vectors[i],"et",vectors[2],"non orthogonaux ");
+            END_IF
+        END_FOR
+    END_FOR
+END
+
+
+/////////////////  partie3 ///////////////////////
+
+
+FUNCTION dot_product(v1,v2):INTEGER;
+VAR
+    ps:INTEGER:=0;
+BEGIN
+    FOR i FROM 0 TO v1.length -1 DO
+        ps:=ps+(v1[i]*v2[i]);
+    END_FOR
+    RETURN(PS);
+END
+
+ALGORITHM orthogonal_2
+    var
+        i,j:INTEGER;
+        vectors:ARRAY_OF INTEGER:=[[8, 3, 1],[9, 0, 3], [1, 4, 0], [3, 1, 2], [2, 3 ,8], [1, 2, 0]]
+BEGIN
+    FOR i FROM 0 TO n-1 STEP 1 DO
+        FOR j FROM 1 TO n-1 STEP 1  DO
+            IF (dot_product=0) THEN
+                write(vectors[i],"et",vectors[j],"orthogonaux ")
+            ELSE
+                write(vectors[i],"et",vectors[j],"non orthogonaux ")
+            END_IF
+        END_FOR
+    END_FOR
+END
